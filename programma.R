@@ -1,14 +1,14 @@
-install.packages("dplyr")
-install.packages("ggplot2")
+install.packages(c("dplyr", "ggplot2", "tidyr", "readr", "lubridate"))
 
-library(dplyr)
-library(ggplot2)
 
 kordat <- read.table("variants8.txt",
-                      header = TRUE,
-                      strip.white = TRUE,
-                      row.names = 1,
-                      stringsAsFactors = FALSE)
+                     header = TRUE,
+                     sep = ";",       
+                     dec = ",",       
+                     strip.white = TRUE,
+                     row.names = 1,
+                     stringsAsFactors = FALSE)
+kordat[] <- lapply(kordat, function(x) if(is.character(x)) trimws(x) else x)
  kordat[ , 9:ncol(kordat)] <- lapply(kordat[ , 9:ncol(kordat)], as.factor)
 
  sink("results.txt")
