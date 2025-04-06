@@ -1,4 +1,5 @@
 install.packages(c("dplyr", "ggplot2", "tidyr", "readr", "lubridate"))
+install.packages("devtools")
 
 kordat <- read.table("variants8.txt",
                      header = TRUE,
@@ -56,3 +57,5 @@ kordat <- read.table("variants8.txt",
       geom_boxplot() +
       theme_minimal() +
       labs(title = "Kastu grafiks: Intercept pēc f faktora", x = "f faktors", y = "Intercept")
+
+      system("make --version")
